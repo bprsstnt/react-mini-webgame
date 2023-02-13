@@ -1,0 +1,56 @@
+<html>
+<head>
+</head>
+<body>
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!--<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>-->
+<!--<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>-->
+<script type="text/babel">
+ 
+ const Gugudan = () => {
+  const [operandA, setOperandA] = React.useState(Math.ceil(Math.random() * 9));
+  const [operandB, setOperandB] = React.useState(Math.ceil(Math.random() * 9));
+  const [value, setValue] = React.useState('');
+  const [result, setResult] = React.useState('');
+  const inputRef = React.useRef(null);
+  
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+
+    if(parseInt(value) === operandA * operandB) {
+      setOperandA(Math.ceil(Math.random() * 9));
+      setOperandB(Math.ceil(Math.random() * 9));
+      setValue('');
+      setResult(`Correct! ${operandA} * ${operandB} = ${operandA * operandB}`);
+      inputRef.current.focus();
+    } else {
+      setResult('Wrong');
+      setValue('');
+      inputRef.current.focus();
+    }
+  }
+
+  const onChangeHandler = (e) => {
+    setValue(e.target.value);
+  }
+
+  return(
+      <React.Fragment>
+        <div>{operandA} multiply by {operandB} is?</div>
+        <form onSubmit={onSubmitHandler}>
+          <input ref={inputRef} type="number" value={value} onChange={onChangeHandler}/>
+          <button>Input</button>
+        </form>
+        <div>{result}</div>
+      </React.Fragment>
+    )
+}
+</script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.querySelector('#root')).render(<Gugudan/>);
+</script>
+</body>
+</html>
