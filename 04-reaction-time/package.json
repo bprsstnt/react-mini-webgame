@@ -1,7 +1,7 @@
 {
   "name": "04-reflex-game",
   "version": "1.0.0",
-  "description": "Reflex game",
+  "description": "Reaction Time Test",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --env development",

@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 
 
-const Reflex = () => {
+const ReactionTime = () => {
     const [state, setState] = useState('waiting');
     const [message, setMessage] = useState('Click to begin.');
     const [result, setResult] = useState([]);
@@ -60,4 +60,4 @@ const Reflex = () => {
     )
 }
 
-export default Reflex;
+export default ReactionTime;
